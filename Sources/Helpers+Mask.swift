@@ -145,7 +145,34 @@ extension Helpers {
         }
         return mask
     }
-    
+
+    func maskForPhone6(_ count: Int) -> String {
+        var mask = "+1(XXX)XXX-XXXX"
+        switch count {
+        case 4:
+            mask = "    XX)XXX-XXXX"
+        case 5:
+            mask = "     X)XXX-XXXX"
+        case 6:
+            mask = "      )XXX-XXXX"
+        case 8:
+            mask = "        XX-XXXX"
+        case 9:
+            mask = "         X-XXXX"
+        case 10:
+            mask = "          -XXXX"
+        case 12:
+            mask = "            XXX"
+        case 13:
+            mask = "             XX"
+        case 14:
+            mask = "              X"
+        default:
+            mask = ""
+        }
+        return mask
+    }
+
     public class func masckForCodeSms(_ count: Int) -> String {
         var mask = "X   X   X   X   X   X"
         switch count {
