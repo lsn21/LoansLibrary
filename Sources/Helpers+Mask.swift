@@ -146,7 +146,7 @@ extension Helpers {
         return mask
     }
 
-    func maskForPhone6(_ count: Int) -> String {
+    public class func maskForPhone6(_ count: Int) -> String {
         var mask = "+1(XXX)XXX-XXXX"
         switch count {
         case 4:
