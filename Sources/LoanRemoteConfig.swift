@@ -33,7 +33,8 @@ public class LoanRemoteConfig {
     public static var urlPrivacy = ""
     public static var urlAfterDemo = ""
     public static var urlAfterForm = ""
-    
+    public static var urlAfterLaunch = ""
+
     private init() { }
     
     class func getRemoteValues() {
@@ -51,6 +52,7 @@ public class LoanRemoteConfig {
 
         urlAfterDemo = string(forKey: "app_keitaro_afterdemo")
         urlAfterForm = string(forKey: "app_keitaro_url_afterform")
+        urlAfterLaunch = string(forKey: "app_keitaro_url_afterapplaunch")
     }
     
     public class func fetchCloudValues() {
