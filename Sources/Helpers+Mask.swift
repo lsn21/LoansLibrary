@@ -173,6 +173,33 @@ extension Helpers {
         return mask
     }
 
+    public class func maskForPhone7(_ count: Int) -> String {
+        var mask = "(XXX)XXX-XXXX"
+        switch count {
+        case 2:
+            mask = "  XX)XXX-XXXX"
+        case 3:
+            mask = "   X)XXX-XXXX"
+        case 4:
+            mask = "    )XXX-XXXX"
+        case 6:
+            mask = "      XX-XXXX"
+        case 7:
+            mask = "       X-XXXX"
+        case 8:
+            mask = "        -XXXX"
+        case 10:
+            mask = "          XXX"
+        case 11:
+            mask = "           XX"
+        case 12:
+            mask = "            X"
+        default:
+            mask = ""
+        }
+        return mask
+    }
+
     public class func masckForCodeSms(_ count: Int) -> String {
         var mask = "X   X   X   X   X   X"
         switch count {
@@ -211,4 +238,22 @@ extension Helpers {
         return mask
     }
 
+    public class func masckForCodeSms3(_ count: Int) -> String {
+        var mask = "XXX-XXX"
+        switch count {
+        case 1:
+            mask = " XX-XXX"
+        case 2:
+            mask = "  X-XXX"
+        case 3:
+            mask = "   -XXX"
+        case 5:
+            mask = "     XX"
+        case 6:
+            mask = "      X"
+        default:
+            mask = ""
+        }
+        return mask
+    }
 }
