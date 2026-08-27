@@ -28,8 +28,8 @@ open class LoanViewController: UIViewController {
 
     open weak var delegate: UITabBarDelegate?
     
-    open var heightCorrect: CGFloat = 16
-    open var heightCorrectPad: CGFloat = -16
+    open var heightCorrect: CGFloat = 0
+    open var heightCorrectPad: CGFloat = 0
     
     open var xCorrect: CGFloat = 0
 
@@ -46,10 +46,13 @@ open class LoanViewController: UIViewController {
         super.viewDidLayoutSubviews()
 
         let height = tabBar.frame.size.height
-        var newTabBarHeight = height + heightCorrect
+        var newTabBarHeight = height
         var newFrame = tabBar.frame
         if iPad {
             newTabBarHeight = height + heightCorrectPad
+        }
+        else {
+            newTabBarHeight = height + heightCorrect
         }
         newFrame.size.height = newTabBarHeight
         newFrame.size.width = widthScreen + xCorrect
@@ -57,9 +60,12 @@ open class LoanViewController: UIViewController {
         let x = tabBar.frame.origin.x
         let newTabBarX = x - xCorrect / 2
         let y = tabBar.frame.origin.y
-        var newTabBarY = y + yCorrect
+        var newTabBarY = y
         if iPad {
             newTabBarY = y + yCorrectPad
+        }
+        else {
+            newTabBarY = y + yCorrect
         }
         newFrame.origin.x = newTabBarX
         newFrame.origin.y = newTabBarY
