@@ -92,3 +92,27 @@ extension LoanViewController: UITabBarDelegate {
         }
     }
 }
+
+extension UIDevice {
+    var isPhysicallyIPad: Bool {
+        var systemInfo = utsname()
+        uname(&systemInfo)
+        
+        let machineMirror = Mirror(reflecting: systemInfo.machine)
+        let identifier = machineMirror.children.reduce("") { identifier, element in
+            guard let value = element.value as? Int8, value != 0 else { return identifier }
+            return identifier + String(UnicodeScalar(UInt8(value)))
+        }
+        
+        // На симуляторе identifier вернет "i386" или "x86_64" или "arm64"
+        // Поэтому для симулятора проверяем переменную среды SIMULATOR_MODEL_IDENTIFIER
+        if identifier == "i386" || identifier == "x86_64" || identifier == "arm64" {
+            if let simulatorModel = ProcessInfo.processInfo.environment["SIMULATOR_MODEL_IDENTIFIER"] {
+                return simulatorModel.contains("iPad")
+            }
+        }
+        
+        // Для реального устройства проверяем физический идентификатор (например, "iPad13,4")
+        return identifier.contains("iPad")
+    }
+}
